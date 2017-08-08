@@ -1,7 +1,7 @@
 # webpack-dev-middleware-for-koa2
 Development and Hot Module Reload Middleware for Koa2.
 
-This module is a fork of koa-webpack-middleware, it wraps and composes webpack-dev-middleware and webpack-hot-middleware.
+This module is a fork of [koa-webpack-middleware](https://github.com/leecade/koa-webpack-middleware), it wraps and composes `webpack-dev-middleware` and `webpack-hot-middleware`.
 
 ## Install
 
