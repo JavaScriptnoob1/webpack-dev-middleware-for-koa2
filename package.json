@@ -1,0 +1,38 @@
+{
+  "name": "webpack-dev-middleware-for-koa2",
+  "version": "0.1.0",
+  "description": "Dev and Hot middleware for KOA2",
+  "keywords": [
+    "koa2",
+    "webpack",
+    "middleware"
+  ],
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "babel index.js --out-dir dist"
+  },
+  "peerDependencies": {
+    "koa": "^2.0.0"
+  },
+  "dependencies": {
+    "webpack-dev-middleware": "^1.12.0",
+    "webpack-hot-middleware": "^2.18.2"
+  },
+  "devDependencies": {
+    "babel-cli": "6.24.1",
+    "babel-core": "6.24.1",
+    "babel-preset-es2015": "6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "regenerator-runtime": "0.10.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JavaScriptnoob1/webpack-dev-middleware-for-koa2.git"
+  },
+  "author": "JavaScriptnoob1 <script1314java@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JavaScriptnoob1/webpack-dev-middleware-for-koa2/issues"
+  },
+  "homepage": "https://github.com/JavaScriptnoob1/webpack-dev-middleware-for-koa2#readme"
+}
