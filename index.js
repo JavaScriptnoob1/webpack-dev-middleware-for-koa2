@@ -2,17 +2,17 @@ import devMiddleware from 'webpack-dev-middleware'
 import hotMiddleware from 'webpack-hot-middleware'
 import { PassThrough } from 'stream'
 
-const koaDevMiddleware =  (compiler, opts, callback) => {
-  if (!options.dev.publicPath) {
+const koaDevMiddleware = (compiler, options, callback) => {
+  if (!options.publicPath) {
     let publicPath = compiler.options.output.publicPath;
 
     if (!publicPath) {
-      throw new Error('publicPath must be set on `dev` options or in compiler\'s `output` configuration.');
+      throw new Error('publicPath must be set on options or in compiler\'s `output` configuration.');
     }
 
-    options.dev.publicPath = publicPath;
+    options.publicPath = publicPath;
   }
-  const expressMiddleware = devMiddleware(compiler, opts)
+  const expressMiddleware = devMiddleware(compiler, options)
   if (callback) {
     expressMiddleware.waitUntilValid(callback)
   }
@@ -28,8 +28,8 @@ const koaDevMiddleware =  (compiler, opts, callback) => {
   }
 }
 
-const koaHotMiddleware =  (compiler, opts) => {
-  const expressMiddleware = hotMiddleware(compiler, opts)
+const koaHotMiddleware = (compiler, options) => {
+  const expressMiddleware = hotMiddleware(compiler, options)
   return async (ctx, next) => {
     let stream = new PassThrough()
     ctx.body = stream
@@ -43,4 +43,4 @@ const koaHotMiddleware =  (compiler, opts) => {
   }
 }
 
-export default { koaDevMiddleware, koaHotMiddleware }
+module.exports = { koaDevMiddleware, koaHotMiddleware }

@@ -1,9 +1,5 @@
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
 var _webpackDevMiddleware = require('webpack-dev-middleware');
 
 var _webpackDevMiddleware2 = _interopRequireDefault(_webpackDevMiddleware);
@@ -18,17 +14,17 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
-var koaDevMiddleware = function koaDevMiddleware(compiler, opts, callback) {
-  if (!options.dev.publicPath) {
+var koaDevMiddleware = function koaDevMiddleware(compiler, options, callback) {
+  if (!options.publicPath) {
     var publicPath = compiler.options.output.publicPath;
 
     if (!publicPath) {
-      throw new Error('publicPath must be set on `dev` options or in compiler\'s `output` configuration.');
+      throw new Error('publicPath must be set on options or in compiler\'s `output` configuration.');
     }
 
     options.dev.publicPath = publicPath;
   }
-  var expressMiddleware = (0, _webpackDevMiddleware2.default)(compiler, opts);
+  var expressMiddleware = (0, _webpackDevMiddleware2.default)(compiler, options);
   if (callback) {
     expressMiddleware.waitUntilValid(callback);
   }
@@ -62,8 +58,8 @@ var koaDevMiddleware = function koaDevMiddleware(compiler, opts, callback) {
   }();
 };
 
-var koaHotMiddleware = function koaHotMiddleware(compiler, opts) {
-  var expressMiddleware = (0, _webpackHotMiddleware2.default)(compiler, opts);
+var koaHotMiddleware = function koaHotMiddleware(compiler, options) {
+  var expressMiddleware = (0, _webpackHotMiddleware2.default)(compiler, options);
   return function () {
     var _ref2 = _asyncToGenerator(regeneratorRuntime.mark(function _callee2(ctx, next) {
       var stream;
@@ -97,4 +93,4 @@ var koaHotMiddleware = function koaHotMiddleware(compiler, opts) {
   }();
 };
 
-exports.default = { koaDevMiddleware: koaDevMiddleware, koaHotMiddleware: koaHotMiddleware };
+module.exports = { koaDevMiddleware: koaDevMiddleware, koaHotMiddleware: koaHotMiddleware };
